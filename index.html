@@ -141,20 +141,22 @@
             font-weight: 600;
         }
 
-        /* Responsive styles for mobile devices */
+        /* --- UPDATED: Responsive styles for mobile devices --- */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
             }
 
             .coin-container {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 2rem;
+                /* Increased size for better visibility on mobile */
+                width: 200px;
+                height: 200px;
+                margin-bottom: 2.5rem;
             }
 
             .face {
-                font-size: 4rem;
+                /* Increased font size to match the new container size */
+                font-size: 5.5rem;
             }
 
             .controls {
@@ -172,18 +174,21 @@
             }
         }
 
+        /* Fine-tuning for very small screens */
         @media (max-width: 480px) {
             .header h1 {
                 font-size: 1.8rem;
             }
 
             .coin-container {
-                width: 120px;
-                height: 120px;
+                 /* Slightly smaller than tablet, but still larger than before */
+                width: 180px;
+                height: 180px;
             }
 
              .face {
-                font-size: 3rem;
+                /* Adjust font to fit the 180px container */
+                font-size: 5rem;
             }
         }
 
@@ -229,7 +234,6 @@
 
                 const result = Math.random() < 0.5 ? 'heads' : 'tails';
 
-                // Add at least 5 full rotations, and then land on the correct side
                 rotationAngle += (360 * 5); 
                 if (result === 'tails') {
                     if ((rotationAngle / 180) % 2 === 0) {
