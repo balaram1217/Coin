@@ -141,6 +141,52 @@
             font-weight: 600;
         }
 
+        /* Responsive styles for mobile devices */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .coin-container {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 2rem;
+            }
+
+            .face {
+                font-size: 4rem;
+            }
+
+            .controls {
+                padding: 2rem;
+                max-width: 90%;
+            }
+
+            #flipButton {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            #result-container {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .coin-container {
+                width: 120px;
+                height: 120px;
+            }
+
+             .face {
+                font-size: 3rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -172,7 +218,6 @@
             const coinFlipSound = document.getElementById('coinFlipSound');
 
             let rotationAngle = 0;
-            let isFirstFlip = true;
 
             flipButton.addEventListener('click', () => {
                 flipButton.disabled = true;
@@ -182,16 +227,10 @@
 
                 resultText.textContent = '';
 
-                let result;
+                const result = Math.random() < 0.5 ? 'heads' : 'tails';
 
-                if (isFirstFlip) {
-                    result = 'heads';
-                    isFirstFlip = false;
-                } else {
-                    result = Math.random() < 0.5 ? 'heads' : 'tails';
-                }
-
-                rotationAngle += 1800; 
+                // Add at least 5 full rotations, and then land on the correct side
+                rotationAngle += (360 * 5); 
                 if (result === 'tails') {
                     if ((rotationAngle / 180) % 2 === 0) {
                         rotationAngle += 180;
