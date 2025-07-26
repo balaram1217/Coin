@@ -22,20 +22,24 @@
         body {
             font-family: 'Poppins', sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* Changed to flex-start to align content to the top */
+            align-items: center; 
+            justify-content: flex-start;
             min-height: 100vh;
             flex-direction: column;
             background-color: var(--background-color);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            /* Added top padding */
+            padding: 40px 20px 20px;
             box-sizing: border-box;
         }
 
         .header {
             text-align: center;
             margin-bottom: 2rem;
+            /* The header will now be at the top */
+            width: 100%;
         }
 
         .header h1 {
@@ -51,6 +55,8 @@
             height: 180px;
             perspective: 1200px;
             margin-bottom: 3rem;
+            /* Added margin-top to give space below header */
+            margin-top: 2rem;
         }
 
         #coin {
@@ -143,20 +149,25 @@
 
         /* --- UPDATED: Responsive styles for mobile devices --- */
         @media (max-width: 768px) {
+            body {
+                padding-top: 20px; /* Adjust padding for smaller screens */
+            }
+
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .coin-container {
-                /* Increased size for better visibility on mobile */
-                width: 200px;
-                height: 200px;
-                margin-bottom: 2.5rem;
+                /* Increased size significantly for better visibility */
+                width: 240px;
+                height: 240px;
+                margin-top: 1.5rem;
+                margin-bottom: 2rem;
             }
 
             .face {
                 /* Increased font size to match the new container size */
-                font-size: 5.5rem;
+                font-size: 7rem;
             }
 
             .controls {
@@ -165,7 +176,7 @@
             }
 
             #flipButton {
-                padding: 12px 30px;
+                padding: 14px 35px;
                 font-size: 1rem;
             }
 
@@ -177,18 +188,18 @@
         /* Fine-tuning for very small screens */
         @media (max-width: 480px) {
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .coin-container {
-                 /* Slightly smaller than tablet, but still larger than before */
-                width: 180px;
-                height: 180px;
+                /* Made bigger for small phones */
+                width: 220px;
+                height: 220px;
             }
 
              .face {
-                /* Adjust font to fit the 180px container */
-                font-size: 5rem;
+                /* Adjust font to fit the 220px container */
+                font-size: 6rem;
             }
         }
 
@@ -227,7 +238,7 @@
             flipButton.addEventListener('click', () => {
                 flipButton.disabled = true;
                 
-                coinFlipSound.currentTime = 0; // Rewind to the start
+                coinFlipSound.currentTime = 0;
                 coinFlipSound.play();
 
                 resultText.textContent = '';
