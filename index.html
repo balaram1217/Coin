@@ -141,21 +141,6 @@
             font-weight: 600;
         }
 
-        #score-tracker {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            color: var(--subtle-text-color);
-        }
-        
-        #score-tracker span {
-            font-weight: 600;
-        }
-        
-        .heads-score { color: #b58900; }
-        .tails-score { color: #5a6268; }
-
-
-        
     </style>
 </head>
 <body>
@@ -175,39 +160,23 @@
         <div id="result-container">
             <span id="result-text"></span>
         </div>
-        <div id="score-tracker">
-            Heads: <span id="heads-score" class="heads-score">0</span> | 
-            Tails: <span id="tails-score" class="tails-score">0</span>
-        </div>
     </div>
 
     <audio id="coinFlipSound" src="coin-flip-shimmer-85750.mp3" preload="auto"></audio>
-
-    
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const coin = document.getElementById('coin');
             const flipButton = document.getElementById('flipButton');
             const resultText = document.getElementById('result-text');
-            const headsScoreSpan = document.getElementById('heads-score');
-            const tailsScoreSpan = document.getElementById('tails-score');
-            
-            // Get the new audio element
             const coinFlipSound = document.getElementById('coinFlipSound');
 
-            let headsCount = 0;
-            let tailsCount = 0;
             let rotationAngle = 0;
             let isFirstFlip = true;
 
-            headsScoreSpan.textContent = headsCount;
-            tailsScoreSpan.textContent = tailsCount;
-            
             flipButton.addEventListener('click', () => {
                 flipButton.disabled = true;
                 
-                // 2. PLAY THE SOUND
                 coinFlipSound.currentTime = 0; // Rewind to the start
                 coinFlipSound.play();
 
@@ -236,15 +205,10 @@
 
                 setTimeout(() => {
                     if (result === 'heads') {
-                        headsCount++;
                         resultText.innerHTML = `It's <span style="font-weight:700; color: #b58900;">Heads</span>`;
                     } else {
-                        tailsCount++;
                         resultText.innerHTML = `It's <span style="font-weight:700; color: #5a6268;">Tails</span>`;
                     }
-                    
-                    headsScoreSpan.textContent = headsCount;
-                    tailsScoreSpan.textContent = tailsCount;
                     
                     flipButton.disabled = false;
                 }, 1500);
